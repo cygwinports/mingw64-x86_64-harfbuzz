@@ -2,8 +2,8 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-harfbuzz"
-VERSION=0.9.19
-RELEASE=2
+VERSION=0.9.25
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="OpenType text shaping engine for Win64 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
