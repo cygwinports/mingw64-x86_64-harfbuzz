@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-harfbuzz"
-VERSION=1.4.8
+VERSION=1.7.4
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="OpenType text shaping engine for Win64 toolchain"
@@ -16,8 +16,6 @@ SRC_DIR="harfbuzz-${VERSION}"
 
 CYGCONF_ARGS="--disable-static"
 MAKEOPTS+=" bin_PROGRAMS= "
-
-KEEP_LA_FILES="none"
 
 PKG_NAMES="${NAME} ${NAME}-icu"
 mingw64_x86_64_harfbuzz_CONTENTS="--exclude=hb-icu.h
