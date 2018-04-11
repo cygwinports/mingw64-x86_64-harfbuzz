@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-harfbuzz"
-VERSION=1.7.4
+VERSION=1.7.6
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="OpenType text shaping engine for Win64 toolchain"
@@ -17,8 +17,9 @@ SRC_DIR="harfbuzz-${VERSION}"
 CYGCONF_ARGS="--disable-static"
 MAKEOPTS+=" bin_PROGRAMS= "
 
-PKG_NAMES="${NAME} ${NAME}-icu"
-mingw64_x86_64_harfbuzz_CONTENTS="--exclude=hb-icu.h
+PKG_NAMES="${NAME} ${NAME}-icu ${NAME}-subset"
+mingw64_x86_64_harfbuzz_CONTENTS="
+	--exclude=hb-icu.h --exclude=hb-subset*
 	${CROSS_BINDIR#/}/libharfbuzz-0.dll
 	${CROSS_INCLUDEDIR#/}/harfbuzz/
 	${CROSS_LIBDIR#/}/libharfbuzz.dll.a
@@ -31,3 +32,11 @@ mingw64_x86_64_harfbuzz_icu_CONTENTS="
 	${CROSS_LIBDIR#/}/libharfbuzz-icu.dll.a
 	${CROSS_LIBDIR#/}/pkgconfig/harfbuzz-icu.pc
 "
+mingw64_x86_64_harfbuzz_subset_CONTENTS="
+	${CROSS_BINDIR#/}/libharfbuzz-subset-0.dll
+	${CROSS_INCLUDEDIR#/}/harfbuzz/hb-subset*
+	${CROSS_LIBDIR#/}/libharfbuzz-subset.dll.a
+	${CROSS_LIBDIR#/}/pkgconfig/harfbuzz-subset.pc
+"
+# not auto-generated, needs fixing for portability
+PKG_IGNORE="${CROSS_LIBDIR#/}/cmake/harfbuzz/"
